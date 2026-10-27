@@ -1,6 +1,7 @@
 // AST 抽取：返回含中文的字符串字面量 / 模板片段（含位置、用途、上下文）。
 import { createRequire } from 'node:module'
-const require = createRequire('/Users/adlibmacmini2021/node_modules/')
+// acorn は package.json の dependencies（npm install / npx で入る）
+const require = createRequire(import.meta.url)
 const acorn = require('acorn')
 
 export const CJK = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/

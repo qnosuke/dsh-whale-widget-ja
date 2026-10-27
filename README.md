@@ -30,9 +30,10 @@ dsh plugin --profile web add dsh-whale-widget
 ## 使い方
 
 ```bash
-# 1) このリポジトリを取得
+# 1) このリポジトリを取得して依存を入れる（構文解析に acorn を使います）
 git clone https://github.com/qnosuke/dsh-whale-widget-ja.git
 cd dsh-whale-widget-ja
+npm install
 
 # 2) 適用（バックアップ自動作成）
 node bin/cli.mjs apply

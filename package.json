@@ -39,5 +39,8 @@
     "node": ">=18"
   },
   "dshWhaleTarget": "0.4.2",
-  "author": "qnosuke"
+  "author": "qnosuke",
+  "dependencies": {
+    "acorn": "^8.15.0"
+  }
 }
