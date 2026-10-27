@@ -11,7 +11,8 @@
     "src",
     "README.md",
     "LICENSE",
-    "NOTICE"
+    "NOTICE",
+    "README.en.md"
   ],
   "scripts": {
     "test": "node test/parse.mjs",

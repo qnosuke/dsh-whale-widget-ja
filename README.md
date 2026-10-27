@@ -1,5 +1,7 @@
 # dsh-whale-widget-ja
 
+[English README](README.en.md)
+
 DSH（DeepSeek Harness）Web 画面右下の **小鲸鱼ウィジェット** [`dsh-whale-widget`](https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget) を
 **日本語 + 日本円表示**にする非公式パッチです。
 
