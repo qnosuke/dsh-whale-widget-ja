@@ -160,7 +160,7 @@ export const POST = [
     required: true,
   },
 
-  // ===== サーバー側：為替レートの取得と配信（3 時間キャッシュ） =====
+  // ===== サーバー側：為替レートの取得と配信（6 時間キャッシュ） =====
   {
     rel: 'lib/index.js',
     from: "const DSH_HOME = process.env.DSH_HOME || path.join(os.homedir(), '.dsh')",
