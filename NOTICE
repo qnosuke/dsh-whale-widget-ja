@@ -1,0 +1,34 @@
+# NOTICE
+
+本リポジトリは、**MeteorNOX** 氏による
+[`dsh-whale-widget`](https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget)
+（DeepSeek Balance Whale Widget）の**非公式な日本語化パッチ**です。上流プロジェクトおよび
+DeepSeek 社とは関係ありません。
+
+## 含まれるもの
+
+* 日本語訳の辞書データ（`src/dict.json`）— 上流コードの UI 文言を日本語に置き換えるための対応表
+* 適用・検査・復元のツール（`bin/`, `src/`）
+* 上流コードの**短い引用**（`src/postpatch.mjs` の `from` 側）— 置換対象を特定するための最小限のスニペット
+
+これらは上流の **MIT License**（Copyright (c) 2026 MeteorNOX）に基づいて利用・再配布しています。
+全文は [`LICENSE`](LICENSE) を参照してください。
+
+## 含まれないもの
+
+* 上流 `assets/` の**美術素材**（クジラ画像・GIF・効果音）および `icon.png`
+
+上流の [PROVENANCE.md](https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget/blob/main/PROVENANCE.md)
+にあるとおり、これらは MIT の対象外で「as-is でプラグインと一緒に配布、再許諾なし」とされています。
+本パッチは**素材を一切同梱・再配布しません**。利用者の環境にインストール済みの上流プラグインの
+ファイルを書き換えるだけです。
+
+## 商標
+
+* DeepSeek は DeepSeek 社の商標です。
+* 本プロジェクトは非公式であり、DeepSeek 社・MeteorNOX 氏による承認や推奨を受けたものではありません。
+
+## 上流への還元
+
+翻訳の改善や、上流の新バージョンへの追従は歓迎します。可能であれば上流へ
+PR / issue としてもフィードバックしてください。
