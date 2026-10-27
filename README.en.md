@@ -1,5 +1,7 @@
 # dsh-whale-widget-ja
 
+[![npm](https://img.shields.io/npm/v/dsh-whale-widget-ja)](https://www.npmjs.com/package/dsh-whale-widget-ja)
+
 **Unofficial Japanese localization + JPY display patch for
 [`dsh-whale-widget`](https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget)** —
 the DeepSeek balance whale widget for DSH (DeepSeek Harness).
@@ -33,15 +35,18 @@ dsh plugin --profile web add dsh-whale-widget
 ## Usage
 
 ```bash
-git clone https://github.com/qnosuke/dsh-whale-widget-ja.git
-cd dsh-whale-widget-ja
-npm install                 # acorn is used for AST-based rewriting
-
-node bin/cli.mjs apply      # backups → rewrite → syntax validation
+npx dsh-whale-widget-ja apply
 # then hard-reload the page (Cmd/Ctrl + Shift + R)
 ```
 
-If the package is published to npm: `npx dsh-whale-widget-ja apply`.
+Or clone it if you prefer to run from source:
+
+```bash
+git clone https://github.com/qnosuke/dsh-whale-widget-ja.git
+cd dsh-whale-widget-ja
+npm install                 # acorn is used for AST-based rewriting
+node bin/cli.mjs apply
+```
 
 ### When does it take effect?
 

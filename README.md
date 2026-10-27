@@ -1,5 +1,8 @@
 # dsh-whale-widget-ja
 
+[![npm](https://img.shields.io/npm/v/dsh-whale-widget-ja)](https://www.npmjs.com/package/dsh-whale-widget-ja)
+[![test](https://github.com/qnosuke/dsh-whale-widget-ja/actions/workflows/test.yml/badge.svg)](https://github.com/qnosuke/dsh-whale-widget-ja/actions/workflows/test.yml)
+
 [English README](README.en.md)
 
 DSH（DeepSeek Harness）Web 画面右下の **小鲸鱼ウィジェット** [`dsh-whale-widget`](https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget) を
@@ -32,18 +35,18 @@ dsh plugin --profile web add dsh-whale-widget
 ## 使い方
 
 ```bash
-# 1) このリポジトリを取得して依存を入れる（構文解析に acorn を使います）
+npx dsh-whale-widget-ja apply
+# 画面をハードリロード（Cmd / Ctrl + Shift + R）
+```
+
+これだけです（バックアップは自動で作成されます）。npm 未使用の環境や中身を確認したい場合は clone して実行もできます。
+
+```bash
 git clone https://github.com/qnosuke/dsh-whale-widget-ja.git
 cd dsh-whale-widget-ja
 npm install
-
-# 2) 適用（バックアップ自動作成）
 node bin/cli.mjs apply
-
-# 3) 画面をハードリロード（Cmd/Ctrl + Shift + R）
 ```
-
-npm に公開されていれば `npx dsh-whale-widget-ja apply` でも実行できます。
 
 ### 反映のタイミング
 
