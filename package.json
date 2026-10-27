@@ -28,15 +28,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<YOUR-NAME>/dsh-whale-widget-ja.git"
+    "url": "git+https://github.com/qnosuke/dsh-whale-widget-ja.git"
   },
-  "homepage": "https://github.com/<YOUR-NAME>/dsh-whale-widget-ja#readme",
+  "homepage": "https://github.com/qnosuke/dsh-whale-widget-ja#readme",
   "bugs": {
-    "url": "https://github.com/<YOUR-NAME>/dsh-whale-widget-ja/issues"
+    "url": "https://github.com/qnosuke/dsh-whale-widget-ja/issues"
   },
   "license": "MIT",
   "engines": {
     "node": ">=18"
   },
-  "dshWhaleTarget": "0.4.2"
+  "dshWhaleTarget": "0.4.2",
+  "author": "qnosuke"
 }

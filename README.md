@@ -31,7 +31,7 @@ dsh plugin --profile web add dsh-whale-widget
 
 ```bash
 # 1) このリポジトリを取得
-git clone https://github.com/<YOUR-NAME>/dsh-whale-widget-ja.git
+git clone https://github.com/qnosuke/dsh-whale-widget-ja.git
 cd dsh-whale-widget-ja
 
 # 2) 適用（バックアップ自動作成）
