@@ -126,6 +126,20 @@ node bin/cli.mjs apply --dry-run
 翻訳の追加・修正は `src/dict.json`（キー = 元の中国語リテラル、値 = 日本語リテラル）で行います。
 `{cost}` `{session}` などのプレースホルダと HTML タグは**そのまま**残してください（`npm test` が検証します）。
 
+## 公開（メンテナ向け）
+
+npm へ出す場合はどちらか:
+
+```bash
+# ローカルから
+npm login --registry https://registry.npmjs.org
+npm publish --registry https://registry.npmjs.org --access public
+```
+
+または GitHub の Release を作成する（`.github/workflows/publish.yml` が動きます）。
+事前に **Settings → Secrets and variables → Actions** で `NPM_TOKEN`（Automation トークン）を登録してください。
+この環境の既定 registry は npmmirror ミラーなので、`--registry https://registry.npmjs.org` の指定が必要です。
+
 ## ライセンス
 
 MIT。[LICENSE](LICENSE) を参照してください。

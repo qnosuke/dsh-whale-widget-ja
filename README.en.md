@@ -103,6 +103,18 @@ test/parse.mjs     sanity checks for the dictionary and patch definitions (CI)
   (fail-safe). Please open an issue so it can be updated.
 * Japanese text is longer than Chinese, so a few menu rows may look tighter.
 
+## Publishing (maintainers)
+
+Either publish locally:
+
+```bash
+npm login --registry https://registry.npmjs.org
+npm publish --registry https://registry.npmjs.org --access public
+```
+
+or create a GitHub Release — `.github/workflows/publish.yml` publishes automatically.
+Add an `NPM_TOKEN` secret (Automation token) under **Settings → Secrets and variables → Actions** first.
+
 ## License
 
 MIT — see [LICENSE](LICENSE). Code copyright belongs to MeteorNOX (upstream);
