@@ -1,6 +1,6 @@
 {
   "name": "dsh-whale-widget-ja",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "非公式パッチ: DSH の小鲸鱼ウィジェット (dsh-whale-widget) を日本語 + 日本円表示にする",
   "type": "module",
   "bin": {
