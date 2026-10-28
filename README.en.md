@@ -18,6 +18,7 @@ the DeepSeek balance whale widget for DSH (DeepSeek Harness).
 |---|---|
 | Language | Japanese for menus, settings panels, notifications, dialogs, errors and default bubble texts (~1,300 strings / 1,600 occurrences) |
 | Money | Everything shown in **JPY (¥)**, converted from USD / CNY |
+| GLM peak | Detects GLM Coding Plan peak hours (**Mon–Fri 15:00–19:00 JST** = 14:00–18:00 UTC+8; off-peak costs 50% credits). Quota/plan bubble modules accept `{glm_status}` `{glm_countdown}` `{glm_until}` |
 | FX rate | Fetched **every 6 hours** (also once at page load). Falls back to the last value, then to a built-in default (157 JPY/USD) |
 | Dates | `zh-CN` → `ja-JP` |
 | Logic | Two places that used Chinese text as a condition are adjusted (self-check result check, update-check timeout check) |

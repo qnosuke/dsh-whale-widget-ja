@@ -61,6 +61,40 @@ function dshwThresholdText(v) {
   if (v === null || v === undefined || v === '') return ''
   var n = dshwToDisplay(v, 'USD')
   return isFinite(n) ? dshwFmtNum(n) : String(v)
+// ===== GLM Coding Plan のピーク判定 =====
+// 公式: ピーク = 月〜金 14:00-18:00 SGT (UTC+8)。オフピークはクレジット消費が 50%。
+//  ふきだしの plan/クォータ モジュールで {glm_status} {glm_countdown} {glm_until} が使える。
+function dshwGlmPeakInfo() {
+  var now = new Date()
+  var day = now.getUTCDay() // 0=日 6=土
+  var mins = now.getUTCHours() * 60 + now.getUTCMinutes()
+  var peakStart = 6 * 60   // 06:00 UTC = 14:00 UTC+8 = 15:00 日本時間
+  var peakEnd = 10 * 60    // 10:00 UTC = 18:00 UTC+8 = 19:00 日本時間
+  var weekday = day >= 1 && day <= 5
+  var isPeak = weekday && mins >= peakStart && mins < peakEnd
+  function minsUntil(targetMin, targetDay) {
+    var t = (targetDay - day + 7) % 7
+    var diff = t * 1440 + targetMin - mins
+    if (diff <= 0) diff += 7 * 1440
+    return diff
+  }
+  var diff = isPeak ? minsUntil(peakEnd, day) : (weekday && mins < peakStart ? minsUntil(peakStart, day) : minsUntil(peakStart, (day + 1) % 7))
+  var hh = Math.floor(diff / 60), mm = diff % 60
+  var cd = (hh > 0 ? hh + '時間' : '') + mm + '分'
+  return {
+    isPeak: isPeak,
+    status: isPeak ? 'ピーク' : 'オフピーク',
+    countdown: cd,
+    until: isPeak ? 'ピーク終了まで ' + cd : 'ピーク開始まで ' + cd,
+  }
+}
+function dshwGlmPeakText(key) {
+  var i = dshwGlmPeakInfo()
+  if (key === 'glm_status') return i.status
+  if (key === 'glm_countdown') return i.countdown
+  if (key === 'glm_until') return i.until
+  return ''
+}
 }`
 
 const ORIG_FMT_MONEY = [
@@ -259,4 +293,29 @@ async function readFxRates(force) {
   { rel: 'assets/whale-widget.js', from: "/^通过/.test(aboutSelfResult)", to: "/^成功/.test(aboutSelfResult)", required: true },
   // アップデート確認のタイムアウト判定：メッセージが「タイムアウト」になった
   { rel: 'lib/index.js', from: "/超时/.test(String(err1.message || ''))", to: "/超时|タイムアウト|timeout/i.test(String(err1.message || ''))", required: true },
+  // plan/クォータ モジュールのプレースホルダに GLM ピーク情報を追加
+  {
+    rel: 'assets/whale-widget.js',
+    from: [
+      "    var pwin = bubblePlanWinOf(m)",
+      "    map['plan'] = apiPlanUsedText(m.modelId, pwin)",
+      "    map['plan_used'] = map['plan']",
+      "    map['plan_left'] = apiPlanLeftText(m.modelId, pwin)",
+      "    map['plan_reset'] = apiPlanResetText(m.modelId, pwin)",
+      "    return map",
+    ].join('\n'),
+    to: [
+      "    var pwin = bubblePlanWinOf(m)",
+      "    map['plan'] = apiPlanUsedText(m.modelId, pwin)",
+      "    map['plan_used'] = map['plan']",
+      "    map['plan_left'] = apiPlanLeftText(m.modelId, pwin)",
+      "    map['plan_reset'] = apiPlanResetText(m.modelId, pwin)",
+      "    // GLM Coding Plan のピーク/オフピーク（公式: 平日 14-18時 UTC+8、オフピークは 50%）",
+      "    map['glm_status'] = dshwGlmPeakText('glm_status')",
+      "    map['glm_countdown'] = dshwGlmPeakText('glm_countdown')",
+      "    map['glm_until'] = dshwGlmPeakText('glm_until')",
+      "    return map",
+    ].join('\n'),
+    required: true,
+  },
 ]
