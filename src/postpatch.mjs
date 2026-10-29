@@ -61,6 +61,7 @@ function dshwThresholdText(v) {
   if (v === null || v === undefined || v === '') return ''
   var n = dshwToDisplay(v, 'USD')
   return isFinite(n) ? dshwFmtNum(n) : String(v)
+}
 // ===== GLM Coding Plan のピーク判定 =====
 // 公式: ピーク = 月〜金 14:00-18:00 SGT (UTC+8)。オフピークはクレジット消費が 50%。
 //  ふきだしの plan/クォータ モジュールで {glm_status} {glm_countdown} {glm_until} が使える。
@@ -89,13 +90,16 @@ function dshwGlmPeakInfo() {
   }
 }
 function dshwGlmPeakText(key) {
-  var i = dshwGlmPeakInfo()
-  if (key === 'glm_status') return i.status
-  if (key === 'glm_countdown') return i.countdown
-  if (key === 'glm_until') return i.until
+  // 万一ここで例外が出ても、ふきだし全体が空にならないよう握りつぶす
+  try {
+    var i = dshwGlmPeakInfo()
+    if (key === 'glm_status') return i.status
+    if (key === 'glm_countdown') return i.countdown
+    if (key === 'glm_until') return i.until
+  } catch (err) {}
   return ''
 }
-}`
+`
 
 const ORIG_FMT_MONEY = [
   'function apiFmtMoney(v, cur) {',
